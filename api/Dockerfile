@@ -18,10 +18,20 @@
 # #We will set command for running our application
 # CMD ["npm", "run", "start:prod"]
 
- FROM node:10-alpine
- COPY ./package.json ./
- RUN npm install
+#  FROM node:10-alpine
+#  COPY ./package.json ./
+#  RUN npm install
 
-COPY . .
-RUN npm run build
-CMD ["npm", "run", "start:prod"]
+# COPY . .
+# RUN npm run build
+# CMD ["npm", "run", "start:prod"]
+
+FROM node:11.15.0-alpine
+WORKDIR /app
+ADD package.json /app/package.json
+RUN npm config set registry http://registry.npmjs.org
+RUN npm install
+ADD . /app
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]
