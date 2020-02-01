@@ -1,0 +1,10 @@
+version: '3'
+
+
+services:
+    client:
+        build: client
+        ports:
+        - "4200:4200"
+        container_name: client_container
+        restart: always
