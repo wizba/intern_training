@@ -3,13 +3,17 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ItemsModule } from './items/items.module';
+import { AuthModule } from './authentication/auth/auth.module';
+import { AuthService } from './services/auth/auth.service';
+import { UsersModule } from './modules/users/users.module';
+import { UsersService } from './services/users/users.service';
 
 @Module({
-  imports: [ 
+  imports: [
     MongooseModule.forRoot(
-    'mongodb://127.0.0.1:27017/teuse stDB',
-  ), ItemsModule],
+    'mongodb://mongo:27017/student',
+  ), ItemsModule, AuthModule, UsersModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AuthService, UsersService],
 })
 export class AppModule {}
