@@ -1,10 +1,19 @@
 version: '3'
 
 
-services:
-    client:
-        build: client
+services:    
+    api:
+        build: api
+        container_name: api
         ports:
-        - "4200:4200"
-        container_name: client_container
+            -   "3800:3800"
         restart: always
+        links:
+            - mongo
+
+    mongo: 
+        container_name: mongo
+        image: mongo
+        ports: 
+            - "27017:27017"
+        
