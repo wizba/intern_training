@@ -5,4 +5,5 @@ export interface Item  extends Document{
     name: string;
     description?: string;
     qty: number;
+    cat:[]
    }

@@ -18,7 +18,7 @@ export class ItemsController {
  }
 
  @Post()
- create(@Body() createItemDto: CreateItemDto): Promise<Item> {
+ create(@Body() createItemDto): Promise<Item> {
   return this.itemsService.create(createItemDto);
  }
  
